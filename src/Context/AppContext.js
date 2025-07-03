@@ -10,7 +10,7 @@ function AppContextProvider({ children }) {
   const [posts, setPosts] = useState([]);
   const [totalPages, setTotalPages] = useState(null);
 
-  async function fetchBlogPost(page = 1, tag = null, category) {
+  async function fetchBlogPost(page = 1, tag = null, category=null) {
     setLoading(true);
     let url = `${baseUrl}?page=${page}`;
     if (tag) {
