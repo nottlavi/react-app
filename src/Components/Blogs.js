@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { AppContext } from "../Context/AppContext";
 import Spinner from "./Spinner";
 import BlogDetails from "./BlogDetails";
+import { useLocation } from "react-router-dom";
 
 const Blogs = () => {
   const { posts, loading } = useContext(AppContext);

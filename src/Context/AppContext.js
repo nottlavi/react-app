@@ -1,6 +1,7 @@
 import React, { useState, createContext } from "react";
 import { baseUrl } from "../baseUrl";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const AppContext = createContext();
 
@@ -9,6 +10,7 @@ function AppContextProvider({ children }) {
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState([]);
   const [totalPages, setTotalPages] = useState(null);
+  const navigate = useNavigate();
 
   async function fetchBlogPost(page = 1, tag = null, category=null) {
     setLoading(true);
@@ -35,9 +37,9 @@ function AppContextProvider({ children }) {
     setLoading(false);
   }
 
-  function pageHandler(page) {
+  const pageHandler = (page) => {
+   
     setPage(page);
-    fetchBlogPost(page);
   }
 
   useEffect(() => {
