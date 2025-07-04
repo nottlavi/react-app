@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 const Blogs = () => {
   const { posts, loading } = useContext(AppContext);
   
-  console.log(" printing posts call in blog", posts);
+  
   return (
     <div className="max-w-[620px] w-11/12 mt-[100px] flex flex-col gap-6 mb-40 h-min-screen">
       {loading ? (

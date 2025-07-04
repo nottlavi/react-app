@@ -2,10 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 export const BlogDetails = ({ post }) => {
-  console.log("Post in BlogDetails:", post);
+  
   return (
     <div>
-      <NavLink to={`/blog/${post.id}`}>
+      <NavLink newBaseUrl = "https://codehelp-apis.vercel.app/api/" to={`/blog/${post.id}`}>
         <span>{post.title}</span>
       </NavLink>
       <p>
