@@ -38,7 +38,7 @@ function AppContextProvider({ children }) {
   }
 
   const pageHandler = (page) => {
-   
+    navigate({search : `?page=${page}`})
     setPage(page);
   }
 

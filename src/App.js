@@ -18,11 +18,11 @@ function App() {
   useEffect(() => {
     const page = searchParams.get("page") ?? 1;
     if (location.pathname.includes("tags")) {
-      const tag = location.pathname.split("/").at("-1").replaceAll("-", " ");
+      const tag = location.pathname.split("/").at(-1).replaceAll("-", " ");
       fetchBlogPost(Number(page), tag);
     } else if (location.pathname.includes("category")) {
       const category = location.pathname.split("/").at(-1).replaceAll("-", " ");
-      fetchBlogPost(Number(page), category);
+      fetchBlogPost(Number(page), null ,category);
     }
   }, [location.pathname, location.search]);
 
@@ -31,7 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/tags/:tag" element={<TagPage />}></Route>
-        <Route path="/category/:category" element={<CategoryPage />}></Route>
+        <Route path="/categories/:category" element={<CategoryPage />}></Route>
         <Route path="/blog/:blog" element={<BlogPage />}></Route>
         <Route path="*" element={<p>404 Not Found</p>} />
       </Routes>

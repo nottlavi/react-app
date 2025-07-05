@@ -1,34 +1,34 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+// src/Components/BlogDetails.js
 
-export const BlogDetails = ({ post }) => {
-  
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+
+const BlogDetails = ({ post }) => {
   return (
-    <div>
-      <NavLink newBaseUrl = "https://codehelp-apis.vercel.app/api/" to={`/blog/${post.id}`}>
-        <span>{post.title}</span>
-      </NavLink>
-      <p>
-        By
-        <span>{post.author}</span>
-        On
-        <NavLink to={`/category/${post.category?.replaceAll(" ", "-")}`}>
-          <span>{post.category}</span>
-        </NavLink>
-      </p>
-      <p>Posted on {post.date}</p>
-      <p>{post.content}</p>
-      <div>
-        {
-          post.tags.map( (tag, index) => (
-            <NavLink to={`/tags/${tag.replaceAll(" ","-")}`} key={index}>
-              <span>
-                {`#${tag}`}
-              </span>
+    <div className="blog-details">
+      {post && (
+        <>
+          <NavLink to={`/blog/${post.id}`}>
+            <p className="title">{post.title}</p>
+          </NavLink>
+          <p className="author-info">
+            By <span>{post.author}</span> on{' '}
+            <NavLink to={`/categories/${post.category.replaceAll(' ', '-')}`}>
+              <span>{post.category}</span>
             </NavLink>
-          ) )
-        }
-      </div>
+          </p>
+          <p className="post-date">Posted on {post.date}</p>
+          <p className="post-content">{post.content}</p>
+          <div className="tags">
+            {post.tags &&
+              post.tags.map((tag, index) => (
+                <NavLink key={index} to={`/tags/${tag.replaceAll(' ', '-')}`}>
+                  <span>#{tag}</span>
+                </NavLink>
+              ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };

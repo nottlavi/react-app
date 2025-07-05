@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 
 export const TagPage = () => {
   // const location = useLocation();
-  const tag = useLocation().pathname.split('/');
+  const tag = useLocation().pathname.split('/').at(-1);
   console.log("printing tag", tag)
   return (
     <div className='flex w-full justify-center'>
